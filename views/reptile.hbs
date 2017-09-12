@@ -1,0 +1,76 @@
+<form id="form" class="form-inline" action="/reptile/51job" method="get">
+    <div class="form-group">
+        <label for="exampleInputName2">地区选择：</label>
+        <input type="text" class="form-control" id="city" value="090200" name="city" placeholder="选择工作城市">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail2">职位关键字：</label>
+        <input type="text" class="form-control" id="" value="web前端" name="keyword" placeholder="职位关键字">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail2">平台选择：</label>
+        <select id="disabledSelect" name="platform" class="form-control">
+            <option value="51job" selected>前程51</option>
+            <option value="zlzp">智联招聘</option>
+            <option value="ntw">内推网</option>
+            <option value="liepin">猎聘网</option>
+        </select>
+    </div>
+    <div class="form-group" id="cc">
+
+    </div>
+    <button type="submit" class="btn btn-default">更新当天数据</button>
+</form>
+<script>
+   $(function(){
+      $('#disabledSelect').on('change',function(){
+         $('#form').attr('action','/reptile/'+$(this).val())
+          switch ($(this).val()){
+              case '51job':
+                  var str =`<label for="">工作经验选择：</label>
+                            <select id="disabledSelect" name="exp" class="form-control">
+                                <option value="0" selected>所有</option>
+                                <option value="1">无经验</option>
+                                <option value="2">1-3年</option>
+                                <option value="3">3-5年</option>
+                                <option value="4">5-10年</option>
+                            </select>`;
+                  $('#city').val('090200');
+                  $('#cc').html(str);
+                  break;
+              case 'zlzp':
+                  var str =`<label for="">工作经验选择：</label>
+                            <select id="disabledSelect" name="exp" class="form-control">
+                                <option value="-1" selected>所有</option>
+                                <option value="0000">无经验</option>
+                                <option value="0001">1年以下</option>
+                                <option value="0103">1-3年</option>
+                                <option value="0305">3-5年</option>
+                                <option value="0510">5-10年</option>
+                                <option value="1099">10年以上</option>
+                            </select>`;
+                  $('#city').val('成都');
+                  $('#cc').html(str);
+                  break;
+              case 'ntw':
+                  var str =`<label for="">工作经验选择：</label>
+                            <select id="disabledSelect" name="exp" class="form-control">
+                            <option value=" " selected>不限</option>
+                                <option value="1-3" >1-3年</option>
+                                <option value="3-5">3-5年</option>
+                                <option value="5-10">5-10年</option>
+                                <option value="10-">10年以上</option>
+                            </select>`;
+                  $('#city').val('成都');
+                  $('#cc').html(str);
+                  break;
+              case 'liepin':
+                  $('#cc').html('');
+                  $('#city').val('280020');
+                  break;
+              default:
+                  $('#cc').html()
+          }
+      })
+   })
+</script>

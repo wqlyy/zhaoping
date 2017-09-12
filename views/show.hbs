@@ -1,0 +1,62 @@
+<table id="example" class="display table table-hover" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>职位名称</th>
+        <th>公司名称</th>
+        <th>薪资范围</th>
+        <th>发布日期</th>
+        <th>职位来源</th>
+    </tr>
+    </thead>
+    <tbody>
+   {{#data}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td><a href="{{url}}" target="_blank">{{company}}</a></td>
+            <td>{{salary}}</td>
+            <td>{{pubdate}}</td>
+            <td>{{type}}</td>
+        </tr>
+    {{/data}}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "columnDefs":[
+                {
+                    //设置第一列不参与搜索
+                    "targets":[0],
+                    "searchable":false
+                }
+            ],
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            }
+        });
+    } );
+</script>
